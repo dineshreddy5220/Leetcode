@@ -1,23 +1,8 @@
 class Solution {
     public int minTimeToVisitAllPoints(int[][] points) {
         int timer=0;
-        int[] start=points[0];
-        for(int[] point:points){
-            while(point[0]!=start[0] || point[1]!=start[1]){
-                if(point[0]>start[0]){
-                    start[0]++;
-                }
-                else if(point[0]<start[0]){
-                    start[0]--;
-                }
-                if(point[1]>start[1]){
-                    start[1]++;
-                }
-                else if(point[1]<start[1]){
-                    start[1]--;
-                }
-                timer++;
-            }
+        for(int i=1;i<points.length;i++){
+            timer+=Math.max(Math.abs(points[i][0]-points[i-1][0]),Math.abs(points[i][1]-points[i-1][1]));
         }
         return timer;
     }
